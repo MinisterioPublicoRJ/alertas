@@ -16,6 +16,7 @@ if __name__ == "__main__":
     parser.add_argument('-pl', '--prescricaoLimiar', metavar='prescricaoLimiar', type=int, default=90, help='')
     parser.add_argument('-al', '--schemaAlertas', metavar='schemaAlertas', type=str, help='')
     parser.add_argument('-ac', '--schemaAlertasCompras', metavar='schemaAlertasCompras', type=str, help='')
+    parser.add_argument('-dtb', '--dateTACBegin', metavar='dateTACBegin', type=str, default='2021-05-01', help='')
     args = parser.parse_args()
 
     options = {
@@ -26,7 +27,8 @@ if __name__ == "__main__":
                     'impala_port' : args.impalaPort,
                     'prescricao_limiar': args.prescricaoLimiar,
                     'schema_alertas': args.schemaAlertas,
-                    'schema_alertas_compras': args.schemaAlertasCompras
+                    'schema_alertas_compras': args.schemaAlertasCompras,
+                    'date_tac_begin': args.dateTACBegin,
                 }
     session = AlertaSession(options)
     session.generateAlertas()
